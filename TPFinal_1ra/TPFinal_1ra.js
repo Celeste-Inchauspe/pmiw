@@ -8,7 +8,25 @@ let pantalla = 0;
 let colorBoton = 100; 
 let colorFondo = 220; 
 let tamanoFuente = 18;
+let img1, img2, img3, img4, img5, img6, img7, img8, img10, img11, img12, img14, img16;
 
+function preload() {
+  img1 = loadImage("p1.png");
+  img2 = loadImage("p2.png");
+  img3 = loadImage("p3.png");
+  img4 = loadImage("p4.png");
+  img5 = loadImage("p5.png");
+  img6 = loadImage("p6.png");
+  img7 = loadImage("p7.png");
+  img8 = loadImage("p8.png");
+  img10 = loadImage("p10.png");
+  img11 = loadImage("p11.png");
+  img12 = loadImage("p12.png");
+  img14 = loadImage("p14.png");
+  img16 = loadImage("p16.png");
+  
+}
+  
 function setup() {
   createCanvas(800, 600);
   textAlign(CENTER, CENTER); 
@@ -48,6 +66,7 @@ function draw() {
 
   // --- PANTALLA 1: TÍTULO ---
   else if (pantalla === 1) {
+    image(img1, 0, 0, width, height);
     text("El laberinto del Minotauro", width/2, yCentro);
     dibujarBoton("CREDITOS", 200, 450, 120, 40); 
     dibujarBoton("INICIO", 480, 450, 120, 40);  
@@ -55,6 +74,7 @@ function draw() {
     
   // --- PANTALLA 2: INTRODUCCIÓN ---
   else if (pantalla === 2) {
+    image(img2, 0, 0, width, height);
     let introText = "Eres Teseo y debes entrar al laberinto para encontrar al Minotauro. " +
                     "En el camino deberás decidir si sigues el hilo de Ariadna, enfrentas criaturas mitológicas y eliges diferentes rutas.\n\n" +
                     "Y el objetivo: matar al Minotauro.";
@@ -64,23 +84,26 @@ function draw() {
 
   // --- PANTALLA 3: HILO DE ARIADNA (BIFURCACIÓN INICIAL) ---
   else if (pantalla === 3) {
+    image(img3, 0, 0, width, height);
     let p3Text = "Entrada al laberinto. Apenas entras te encuentras con el hilo de Ariadna, que te guiará de forma más rápida.\n\n" +
                  "¿Deseas usarlo?";
-    text(p3Text, width/2, yCentro);
+    text(p3Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("NO", 200, 450, 120, 40); 
     dibujarBoton("SI", 480, 450, 120, 40); 
   }
   
   // --- PANTALLA 4: PUERTAS CERRADAS ---
   else if (pantalla === 4) {
+    image(img4, 0, 0, width, height);
     let p4Text = "Encuentras unas puertas cerradas.\nEl tramo está bloqueado. ¿Quieres buscar otro camino?";
-    text(p4Text, width/2, yCentro);
+    text(p4Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("NO", 200, 450, 120, 40);  
     dibujarBoton("SI", 480, 450, 120, 40);  
   }
 
   // --- PANTALLA 5: EL PRIMER CRUCE ---
   else if (pantalla === 5) {
+    image(img5, 0, 0, width, height);
     let p5Text = "Recorres un terreno algo baldío con diferentes caminos.\n" +
                    "El de la derecha es totalmente oscuro, sin ninguna alma;\n" +
                    "el de la izquierda tiene ruidos extraños, como lamentos.\n" +
@@ -92,6 +115,7 @@ function draw() {
   
   // --- PANTALLA 6: ENCUENTRO MINOTAURO (RUTA IZQUIERDA) ---
   else if (pantalla === 6) {
+    image(img6, 0, 0, width, height);
     let p6Text = "Encuentras al minotauro, estás frente a frente, solo tienes unos segundos para decidir.";
     text(p6Text, width/2, yCentro); 
     dibujarBoton("HUIR", 200, 450, 120, 40); 
@@ -100,23 +124,26 @@ function draw() {
   
   // --- PANTALLA 7: ENCUENTRO MINOTAURO (RUTA DERECHA) ---
   else if (pantalla === 7) {
+    image(img7, 0, 0, width, height);
     let p7Text = "Encuentras al minotauro, pero las cosas podrían ir mal de inmediato.\n¿Deseas atacar?";
-    text(p7Text, width/2, yCentro);
+    text(p7Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("NO", 200, 450, 120, 40);  
     dibujarBoton("SI", 480, 450, 120, 40);  
   }
   
   // --- PANTALLA 12: PRISIONEROS (RUTA PUERTAS CERRADAS/SI) ---
   else if (pantalla === 12) {
+    image(img12, 0, 0, width, height);
     let p12Text = "Decisiones. Encuentras a los prisioneros del lugar.\n" +
-                  "Oyes a lo lejos los ruidos del Minotauro. ¿Quieres escapar?";
-    text(p12Text, width/2, yCentro); 
+                  "Pero oyes a lo lejos los ruidos del Minotauro. ¿Quieres escapar?";
+    text(p12Text, xCaja, yInicioCaja, anchoCaja, 200); 
     dibujarBoton("NO", 200, 450, 120, 40);  
     dibujarBoton("SI", 480, 450, 120, 40);  
   }
   
   // --- PANTALLA 14: ENCUENTRO MINOTAURO (RUTA PUERTAS CERRADAS/NO o PRISIONEROS/NO) ---
   else if (pantalla === 14) {
+    image(img14, 0, 0, width, height);
     let p14Text = "Encuentras al Minotauro.\nTienes la posibilidad de hablar con él o pelear. ¿Qué decides?";
     text(p14Text, width/2, yCentro);
     dibujarBoton("PELEAR", 200, 450, 120, 40);  
@@ -127,36 +154,42 @@ function draw() {
   
   // PANTALLA 8: Final Huir (ruta P6)
   else if (pantalla === 8) {
+    image(img8, 0, 0, width, height);
     let p8Text = "Tras correr por largo rato y el cansancio susurrando en tu nuca, has logrado escapar,\npero el sentimiento de culpa te atormenta, abandonaste a todos.\nSobreviviste ¡pero a qué costo!";
     text(p8Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
   // PANTALLA 10: Final Victoria (rutas P6 y P7)
   else if (pantalla === 10) {
+    image(img10, 0, 0, width, height);
     let p10Text = "Matas al Minotauro y eres coronado como héroe por todo el mundo. ¡Felicidades!\nRegresa a casa como un campeón, lo tienes totalmente merecido.";
     text(p10Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
   // PANTALLA 11: Final Derrota (ruta P7)
   else if (pantalla === 11) {
+    image(img11, 0, 0, width, height);
     let p11Text = "Lamentablemente quedas sin fuerza, y con tu último aliento ves los ojos furiosos\n del Minotauro, su cuerpo tenebroso y su aura oscura y enloquecida. Eres derrotado por él.";
     text(p11Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
   // PANTALLA 13: Final Huir/Prisioneros (ruta P12)
   else if (pantalla === 13) {
+    image(img8, 0, 0, width, height);
     let p13Text = "Tras varias corridas y el cansancio susurrando en tu nuca has logrado escapar,\npero el sentimiento de culpa te atormenta, abandonaste a todos los prisioneros sin intentar nada.\nSobreviviste ¡pero a qué costo!";
     text(p13Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
   // PANTALLA 15: Final Derrota/Pelear 
   else if (pantalla === 15) {
+    image(img11, 0, 0, width, height);
     let p15Text = "Lamentablemente te quedas sin fuerza, y con tu último aliento, ves los ojos furiosos del minotauro y su aura oscura. ¡Eres derrotado por él!";
     text(p15Text, xCaja, yInicioCaja, anchoCaja, 200);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
   // PANTALLA 16: Final Liberación/Hablar (ruta P14)
   else if (pantalla === 16) {
+    image(img16, 0, 0, width, height);
     text("Las cosas no salen como esperabas pero de algún modo el Minotauro te deja libre. ¡Felicidades!", width/2, yCentro);
     dibujarBoton("INICIO", width/2 - 60, 450, 120, 40);
   }
